@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{002C320C-98F4-4D86-A590-5A954185CE23}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ShoppingCartORT/appsettings.json">
+    <Files>
+      <File FileName="ShoppingCartORT/Data/ShoppingCartORTContext.cs" Line="14" Column="10" />
+      <File FileName="ShoppingCartORT/Data/DbInitializer.cs" />
+      <File FileName="ShoppingCartORT/Models/Usuario.cs" Line="1" Column="1" />
+      <File FileName="ShoppingCartORT/Startup.cs" Line="1" Column="1" />
+      <File FileName="ShoppingCartORT/Program.cs" Line="11" Column="1" />
+      <File FileName="ShoppingCartORT/appsettings.json" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ShoppingCartORT" expanded="True">
+            <Node name="ShoppingCartORT" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Usuario" expanded="True" />
+              </Node>
+              <Node name="appsettings.json" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.ShoppingCartORT PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
