@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShoppingCartORT.Data;
 using ShoppingCartORT.Models;
+using ShoppingCartORT.Controllers;
 
 namespace ShoppingCartORT.Controllers
 {
@@ -14,9 +15,10 @@ namespace ShoppingCartORT.Controllers
     {
         private readonly ShoppingCartORTContext _context;
 
+
         public UsuarioController(ShoppingCartORTContext context)
         {
-            _context = context;
+            _context = context;            
         }
 
         // GET: Usuario
@@ -60,7 +62,7 @@ namespace ShoppingCartORT.Controllers
             {
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Home");
             }
             return View(usuario);
         }
