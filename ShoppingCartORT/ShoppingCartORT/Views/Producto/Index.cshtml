@@ -13,44 +13,60 @@
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.precio)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.precio)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.productoID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.productoID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.productoID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ShoppingCartORT</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="40%" y="50%" fill="#eceeef" dy=".3em"> < Photo ></text></svg>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <span>
+                                        <strong>Nombre:</strong>
+                                    </span>@Html.DisplayFor(modelItem => item.nombre)
+                                </p>
+                                <p class="card-text">
+                                    <span>
+                                        <strong>Descripción:</strong>
+                                    </span>@Html.DisplayFor(modelItem => item.descripcion)
+                                </p>
+                                <p class="card-text">
+                                    <span>
+                                        <strong>Precio:</strong>
+                                    </span>$ @Html.DisplayFor(modelItem => item.precio)
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary">Agregar</button>
+                                    </div>
+                                    <input type="number" class="text-muted">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -14,6 +14,7 @@ namespace ShoppingCartORT.Controllers
     public class UsuarioController : Controller
     {
         private readonly ShoppingCartORTContext _context;
+        private Usuario usuarioContext;
 
 
         public UsuarioController(ShoppingCartORTContext context)
@@ -26,6 +27,35 @@ namespace ShoppingCartORT.Controllers
         {
             return View(await _context.Usuarios.ToListAsync());
         }
+
+        // GET: Usuario/Login/
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        // GET: Usuario/GET
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        //TODO COMPLETAR Y HACER FUNCIONAR ESTO!!!!
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login([Bind("usuarioID,nombre,apellido,dni,password,mail")] Usuario usuario)
+        {
+            if (ModelState.IsValid)
+            {
+               Usuario usuarioFromDB = _context.Usuarios.FirstOrDefault(usu => usu.mail == usuario.mail && usu.password == usuario.password);
+                if (usuario == null) {
+                    return NotFound();
+                }
+                usuarioContext = usuario;
+                return RedirectToAction("Index", "Producto");
+            }
+            return View(usuario);
+        }
+
+
 
         // GET: Usuario/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -62,6 +92,7 @@ namespace ShoppingCartORT.Controllers
             {
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
+                usuarioContext = usuario;
                 return RedirectToAction("Index","Producto");
             }
             return View(usuario);
