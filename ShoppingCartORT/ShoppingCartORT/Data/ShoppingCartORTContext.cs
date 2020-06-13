@@ -14,6 +14,8 @@ namespace ShoppingCartORT.Data
         }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Producto> Productos { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<Item> Items { get; set; }
 
     }
 
