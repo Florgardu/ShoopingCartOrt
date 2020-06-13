@@ -40,19 +40,19 @@ namespace ShoppingCartORT.Controllers
 
         //TODO COMPLETAR Y HACER FUNCIONAR ESTO!!!!
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([Bind("usuarioID,nombre,apellido,dni,password,mail")] Usuario usuario)
+        public async Task<IActionResult> Login(String mail, String password)
         {
             if (ModelState.IsValid)
             {
-               Usuario usuarioFromDB = _context.Usuarios.FirstOrDefault(usu => usu.mail == usuario.mail && usu.password == usuario.password);
-                if (usuario == null) {
-                    return NotFound();
+                var usuarioFromDB = await _context.Usuarios.FirstOrDefaultAsync(usu => usu.mail == mail && usu.password == password);
+                if (usuarioFromDB == null) {
+                    ViewBag.Error = "Usuario o clave incorrectos.";
+                    return View();
                 }
-                usuarioContext = usuario;
+                usuarioContext = usuarioFromDB;
                 return RedirectToAction("Index", "Producto");
             }
-            return View(usuario);
+            return View(null);
         }
 
 
