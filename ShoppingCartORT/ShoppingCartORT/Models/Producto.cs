@@ -7,6 +7,7 @@ namespace ShoppingCartORT.Models
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public double precio { get; set; }
+        public string imagePath { get; set; }
 
     }
 }

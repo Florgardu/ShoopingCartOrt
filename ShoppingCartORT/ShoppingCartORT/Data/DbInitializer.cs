@@ -8,6 +8,7 @@ namespace ShoppingCartORT.Data
     {
         public static void Initialize(ShoppingCartORTContext context)
         {
+            //context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
             if (context.Productos.Any())
@@ -16,13 +17,13 @@ namespace ShoppingCartORT.Data
             }
             var productos = new Producto[]
             {
-                new Producto { nombre = "Leche", descripcion = "leche de almendras", precio = 150 },
-                new Producto { nombre = "Huevos", descripcion = "huevos blancos", precio = 50 },
-                new Producto { nombre = "Chocolate", descripcion = "70% cacao", precio = 100 },
-                new Producto { nombre = "Computadora", descripcion = "Macbook Pro Retina display", precio = 250000 },
-                new Producto { nombre = "Iphone XS", descripcion = "Nuevo Iphone XS", precio = 150000 },
-                new Producto { nombre = "TV 50 Pulgadas SONY", descripcion = "Televisión de 50 Pulgadas 4k SONY", precio = 80000 },
-                new Producto { nombre = "Remera Billabong M", descripcion = "Remera Billabong Talle M - Surf Experience", precio = 1200 },
+                new Producto { nombre = "Leche", descripcion = "leche de almendras", precio = 150, imagePath ="lecheAlmendra.jpg" },
+                new Producto { nombre = "Huevos", descripcion = "huevos blancos", precio = 50, imagePath ="huevos.jpg"  },
+                new Producto { nombre = "Chocolate", descripcion = "70% cacao", precio = 100, imagePath ="chocolatePuro.jpg" },
+                new Producto { nombre = "Blend de té seleccionado", descripcion = "Macbook Pro Retina display", precio = 300, imagePath ="te.jpg" },
+                new Producto { nombre = "Cereales", descripcion = "Cereales de miel", precio = 200, imagePath ="cereales.jpg"},
+                new Producto { nombre = "Vino tinto reserva", descripcion = "vino de roble francés", precio = 800, imagePath ="vinotinto.jpg" },
+                new Producto { nombre = "Quesos gourmet", descripcion = "Picada de Quesos", precio = 1200, imagePath ="queso.jpg" },
             };
             foreach (Producto s in productos)
             {

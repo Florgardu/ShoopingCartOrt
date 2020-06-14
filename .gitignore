@@ -1,4 +1,4 @@
-ShoppingCartORT/ShoppingCartORT/bin/
-ShoppingCartORT/ShoppingCartORT/obj/
-ShoppingCartORT/.vs/
+ShoppingCartORT/ShoppingCartORT/bin/*
+ShoppingCartORT/ShoppingCartORT/obj/*
+ShoppingCartORT/ShoppingCartORT/.vs/*
 .DS_Store
