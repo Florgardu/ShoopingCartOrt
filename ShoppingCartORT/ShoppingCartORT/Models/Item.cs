@@ -5,6 +5,7 @@ namespace ShoppingCartORT.Models
     public class Item
     {
         public int itemId { get; set; }
-        public List<Producto> productos { get; set; }
+        public int cantidad { get; set; }
+        public Producto producto { get; set; }
     }
 }

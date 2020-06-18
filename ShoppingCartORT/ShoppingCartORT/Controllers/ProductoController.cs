@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShoppingCartORT.Data;
 using ShoppingCartORT.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace ShoppingCartORT.Controllers
 {
@@ -22,6 +23,10 @@ namespace ShoppingCartORT.Controllers
         // GET: Producto
         public async Task<IActionResult> Index()
         {
+            var userLogueado = HttpContext.Session.Get("user");
+            if (userLogueado == null) {
+                return RedirectToAction("Login", "Usuario");
+            }
             return View(await _context.Productos.ToListAsync());
         }
 

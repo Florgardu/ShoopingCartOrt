@@ -29,7 +29,8 @@ namespace ShoppingCartORT.Models
         [RegularExpression("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$", ErrorMessage = "Ingrese un imail valido")]
         public string mail { get; set; }
 
-
+        [StringLength(30, MinimumLength = 1)]
+        public string rol { get; set; }
     }
 }
 

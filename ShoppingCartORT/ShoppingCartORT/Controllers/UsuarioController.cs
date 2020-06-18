@@ -1,13 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShoppingCartORT.Data;
 using ShoppingCartORT.Models;
-using ShoppingCartORT.Controllers;
+using Microsoft.AspNetCore.Http;
 
 namespace ShoppingCartORT.Controllers
 {
@@ -34,11 +32,18 @@ namespace ShoppingCartORT.Controllers
             return View();
         }
 
-        // GET: Usuario/GET
+        // GET: Usuario/Logout/
+        public RedirectToActionResult Logout()
+        {
+            HttpContext.Session.SetString("user", string.Empty);
+            return RedirectToAction("Login", "Usuario");
+            
+        }
+
+        // GET: Usuario/Login
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
 
-        //TODO COMPLETAR Y HACER FUNCIONAR ESTO!!!!
         [HttpPost]
         public async Task<IActionResult> Login(String mail, String password)
         {
@@ -50,6 +55,7 @@ namespace ShoppingCartORT.Controllers
                     return View();
                 }
                 usuarioContext = usuarioFromDB;
+                HttpContext.Session.SetString("user", usuarioFromDB.mail);
                 return RedirectToAction("Index", "Producto");
             }
             return View(null);
@@ -90,10 +96,11 @@ namespace ShoppingCartORT.Controllers
         {
             if (ModelState.IsValid)
             {
+                usuario.rol = "USER";
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 usuarioContext = usuario;
-                return RedirectToAction("Index","Producto");
+                return RedirectToAction("Index","Home");
             }
             return View(usuario);
         }
