@@ -23,8 +23,8 @@ namespace ShoppingCartORT.Controllers
         // GET: Producto
         public async Task<IActionResult> Index()
         {
-            var userLogueado = HttpContext.Session.Get("user");
-            if (userLogueado == null) {
+            var userLogueado = HttpContext.Session.GetString("user");
+            if (userLogueado == null || userLogueado == "") {
                 return RedirectToAction("Login", "Usuario");
             }
             return View(await _context.Productos.ToListAsync());

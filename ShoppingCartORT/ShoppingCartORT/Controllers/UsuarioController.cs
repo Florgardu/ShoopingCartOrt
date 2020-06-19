@@ -35,8 +35,10 @@ namespace ShoppingCartORT.Controllers
         // GET: Usuario/Logout/
         public RedirectToActionResult Logout()
         {
+            HttpContext.Session.SetString("rol", string.Empty);
             HttpContext.Session.SetString("user", string.Empty);
-            return RedirectToAction("Login", "Usuario");
+            Console.WriteLine(HttpContext.Session.GetString("user"));
+            return RedirectToAction("Index", "Home");
             
         }
 
@@ -56,6 +58,7 @@ namespace ShoppingCartORT.Controllers
                 }
                 usuarioContext = usuarioFromDB;
                 HttpContext.Session.SetString("user", usuarioFromDB.mail);
+                HttpContext.Session.SetString("rol", usuarioFromDB.rol);
                 return RedirectToAction("Index", "Producto");
             }
             return View(null);

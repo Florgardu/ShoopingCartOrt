@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ShoppingCartORT.Models;
 
@@ -8,7 +9,7 @@ namespace ShoppingCartORT.Data
     {
         public static void Initialize(ShoppingCartORTContext context)
         {
-            //context.Database.EnsureDeleted();
+            context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
             if (context.Productos.Any())
@@ -29,6 +30,24 @@ namespace ShoppingCartORT.Data
             {
                 context.Productos.Add(s);
             }
+
+            var UsuarioAdministrador = new Usuario { nombre = "Administrador", apellido = "Groso", dni = 37848976, mail = "admin@gmail.com", password = "admin123", rol = "ADMIN" };
+            context.Usuarios.Add(UsuarioAdministrador);
+
+            /*List<Item> items = new List<Item>();
+            
+            var item = new Item
+            {
+                cantidad = 2,
+                producto = context.Productos.FirstOrDefault(prod => prod.productoID == 1)
+            };
+
+            items.Add(item);
+
+            var pedido = new Pedido { nombre = "pedido001", usuario = { usucontext.Usuarios.FirstOrDefault(usu => usu.usuarioID == 1).usuarioID }, items = items };
+
+            context.Pedidos.Add(pedido);*/
+
             var cantidadInsertada = context.SaveChanges();
 
 
