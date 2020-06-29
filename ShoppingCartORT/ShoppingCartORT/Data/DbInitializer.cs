@@ -34,34 +34,19 @@ namespace ShoppingCartORT.Data
             var UsuarioAdministrador = new Usuario { nombre = "Administrador", apellido = "Groso", dni = 37848976, mail = "admin@gmail.com", password = "admin123", rol = "ADMIN" };
             context.Usuarios.Add(UsuarioAdministrador);
 
-            context.SaveChanges();
-
-            var productoFromDB = context.Productos.ToList().Find(p => p.productoID == 1);
-            var usuarioFromDB = context.Usuarios.ToList().Find(u => u.usuarioID == 1);
-            var items = new Item[]
+            /*List<Item> items = new List<Item>();
+            
+            var item = new Item
             {
-                    new Item
-                {
-                    cantidad = 10,
-                    producto = productoFromDB
-                }
-            };
-            foreach(Item i in items)
-            {
-                context.Items.Add(i);
-
-            }
-            context.SaveChanges();
-            var pedido = new Pedido
-            {
-                nombre = "Nombre del pedido",
-                usuario = usuarioFromDB,
-                items = context.Items.ToList()
-
+                cantidad = 2,
+                producto = context.Productos.FirstOrDefault(prod => prod.productoID == 1)
             };
 
-            context.Pedidos.Add(pedido);
+            items.Add(item);
 
+            var pedido = new Pedido { nombre = "pedido001", usuario = { usucontext.Usuarios.FirstOrDefault(usu => usu.usuarioID == 1).usuarioID }, items = items };
+
+            context.Pedidos.Add(pedido);*/
 
             var cantidadInsertada = context.SaveChanges();
 

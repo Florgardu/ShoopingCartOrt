@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using ShoppingCartORT.Data;
 using ShoppingCartORT.Models;
 
@@ -53,13 +54,14 @@ namespace ShoppingCartORT.Controllers
         // POST: Pedido/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        public JsonResult Create(List<Item> items)
+        [HttpPost]        
+        public JsonResult Create([FromBody] List<ItemDTO> items)
         {
-            Console.WriteLine("******** "+items.Count);
+            Console.WriteLine("******** "+ items);
 
             return Json(items.Count);
         }
+
 
         // GET: Pedido/Edit/5
         public async Task<IActionResult> Edit(int? id)

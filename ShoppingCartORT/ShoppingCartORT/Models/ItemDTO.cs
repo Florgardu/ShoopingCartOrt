@@ -7,5 +7,6 @@ namespace ShoppingCartORT.Models
         public int itemId { get; set; }
         public int cantidad { get; set; }
         public Producto producto { get; set; }
+        public Pedido pedido { get; set; } // Agregamos al pedido que corresponde.
     }
 }
