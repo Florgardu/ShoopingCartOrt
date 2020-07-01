@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using ShoppingCartORT.Data;
 using ShoppingCartORT.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace ShoppingCartORT.Controllers
 {
@@ -57,6 +58,33 @@ namespace ShoppingCartORT.Controllers
         [HttpPost]        
         public JsonResult Create([FromBody] List<ItemDTO> items)
         {
+            var userMail = HttpContext.Session.GetString("user");
+            var usuarioFromDB = _context.Usuarios.ToList().Find(u => u.mail == userMail);
+
+            //Creamos el pedido
+            var pedido = new Pedido
+            {
+                nombre = "Nombre del pedido",
+                usuario = usuarioFromDB
+            };
+
+            _context.Pedidos.Add(pedido);
+
+            _context.SaveChanges();
+
+            int id = pedido.pedidoID;
+
+            foreach (ItemDTO item in items) {
+                var productoFromDB = _context.Productos.ToList().Find(p => p.productoID == item.productoID);
+                Item i = new Item();
+                i.cantidad = item.cantidad;
+                i.producto = productoFromDB;
+                i.pedido = pedido;
+                _context.Items.Add(i);
+            }
+
+            _context.SaveChanges();
+
             Console.WriteLine("******** "+ items);
 
             return Json(items.Count);

@@ -58,6 +58,8 @@ namespace ShoppingCartORT.Controllers
                 }
                 usuarioContext = usuarioFromDB;
                 HttpContext.Session.SetString("user", usuarioFromDB.mail);
+                HttpContext.Session.SetString("userNombre", usuarioFromDB.nombre);
+                HttpContext.Session.SetString("userApellido", usuarioFromDB.apellido);
                 HttpContext.Session.SetString("rol", usuarioFromDB.rol);
                 return RedirectToAction("Index", "Producto");
             }
