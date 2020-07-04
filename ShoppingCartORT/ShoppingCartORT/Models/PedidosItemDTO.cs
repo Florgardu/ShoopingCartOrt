@@ -1,7 +1,7 @@
 ﻿using System;
 namespace ShoppingCartORT.Models
 {
-    public class PedidosDisplay
+    public class PedidoItemDTO
     {
         public string nombrePedido { get; set; } // Sale del obj pedido
         public string nombreUsuario { get; set; } // Sale del contexto
