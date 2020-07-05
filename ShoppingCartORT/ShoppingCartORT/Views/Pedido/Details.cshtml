@@ -1,7 +1,7 @@
 @model ShoppingCartORT.Models.Pedido
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -12,36 +12,36 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <title>Details</title>
 </head>
-    <body>
-        <table class="table table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>
-                        Nombre producto
-                    </th>
-                    <th>
-                        Precio Unitario
-                    </th>
-                    <th>
-                        Cantidad
-                    </th>
-                    <th>
-                        Total
-                    </th>
+<body>
+    <table class="table table-striped" style=" border: solid #d6d2d2 0.5px; box-shadow: 5px 10px 8px #888888;">
+        <thead class="table-primary">
+            <tr>
+                <th>
+                    Nombre producto
+                </th>
+                <th>
+                    Precio Unitario
+                </th>
+                <th>
+                    Cantidad
+                </th>
+                <th>
+                    Total
+                </th>
 
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
 
-                @foreach (var Item in Model.items)
-                {
+            @foreach (var Item in Model.items)
+            {
                 <tr>
                     <td>
                         @Html.DisplayFor(x => Item.producto.nombre)
                     </td>
                     <td>
-                        @Html.DisplayFor(x => Item.producto.precio)
+                        $@Html.DisplayFor(x => Item.producto.precio)
                     </td>
                     <td>
                         @Html.DisplayFor(x => Item.cantidad)
@@ -50,16 +50,17 @@
                     <td>
                         @{var total = Item.ObtenerTotal();
                         }
-                        @Html.DisplayFor(x => total)
+                        $@Html.DisplayFor(x => total)
                     </td>
 
                     <td>
                     </td>
                 </tr>
-                }
-            </tbody>
-        </table>
-
-
-    </body>
+            }
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-secondary" style=" float: right;">
+        Volver
+    </button>
+</body>
 </html>

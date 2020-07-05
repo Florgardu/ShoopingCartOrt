@@ -1,7 +1,8 @@
 @model IEnumerable<ShoppingCartORT.Models.Pedido>
 
 @{
-    Layout = null;
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
     double totalGeneral = 0;
 }
 
@@ -14,65 +15,67 @@
     <title>Index</title>
 </head>
 <body>
-<table class="table table-striped">
-    <thead class="thead-dark">
-        <tr>
-            <th>
-               #
-            </th>
-            <th>
-                Nombre Comprador
-            </th>
-            <th>
-               Total Pedido
-            </th>
+    <table class="table table-striped" style=" border: solid #d6d2d2 0.5px; box-shadow: 5px 10px 8px #888888;">
+        <thead class="table-primary">
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Nombre Comprador
+                </th>
+                <th>
+                    Total Pedido
+                </th>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach (var pedido in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(x => pedido.pedidoID)
-            </td>
-            <td>
-                @Html.DisplayFor(x => pedido.usuario.nombre)
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pedido in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(x => pedido.pedidoID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => pedido.usuario.nombre)
 
-            </td>
-            <td>
-                @{
-                    var total = pedido.ObtenerTotalPedido();
-                    totalGeneral = totalGeneral + total;
-                }
-                $@Html.DisplayFor(x => total)
-            </td>
+                    </td>
+                    <td>
+                        @{
+                            var total = pedido.ObtenerTotalPedido();
+                            totalGeneral = totalGeneral + total;
+                        }
+                        $@Html.DisplayFor(x => total)
+                    </td>
 
-            <td>
-                <button type="button" class="btn btn-info">
-                    <a asp-action="Details" asp-route-id="@pedido.pedidoID">Detalle</a>
-                </button>
-            </td>
-        </tr>
-}
-    <tr class="table-success">
-        <td>
-            
-        </td>
-        <td>
-            
-            <strong>GANANCIA TOTAL</strong>
-        </td>
-        <td>
-            @{
-                <strong>$ @Html.DisplayFor(x => totalGeneral)</strong>
+                    <td>
+                        <button type="button" class="btn btn-info">
+                            <a asp-action="Details" asp-route-id="@pedido.pedidoID">Detalle</a>
+                        </button>
+                    </td>
+                </tr>
             }
-        </td>
-        <td>
-       </td>
-    </tr>
-    </tbody>
-</table>
+            <tr class="table-success">
+                <td>
+                </td>
+                <td>
+
+                    <strong>GANANCIA TOTAL</strong>
+                </td>
+                <td>
+                    @{
+                        <strong>$ @Html.DisplayFor(x => totalGeneral)</strong>
+                    }
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-secondary" style=" float: right;">
+        Volver
+    </button>
 </body>
 </html>
