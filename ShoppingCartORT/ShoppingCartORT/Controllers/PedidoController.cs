@@ -49,8 +49,6 @@ namespace ShoppingCartORT.Controllers
 
         }
 
-
-
         // GET: Pedido
         public async Task<IActionResult> Index()
         {
@@ -75,13 +73,6 @@ namespace ShoppingCartORT.Controllers
             return View(Pedido);
         }
 
-
-        // GET: Pedido/Details/5
-     //   public async Task<IActionResult> Details(int id)
-       // {
-         //   Console.WriteLine("me llego el id" + id );
-
-//        }
 
         // GET: Pedido/Create
         public IActionResult Create()

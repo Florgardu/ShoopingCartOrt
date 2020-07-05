@@ -116,6 +116,12 @@
             var productos = $(".idProducto");
             var cantidades = $(".valorCantidad");
             var items = new Array();
+
+           /* if (productos.length == 0) {
+                alert("Debe seleccionar al menos un producto para generar el pedido");
+                return false;
+            }*/
+
             for (var i = 0; i < productos.length; i++) {
                 
                 if (parseInt(cantidades[i].value) > 0) {
@@ -137,7 +143,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (r) {
-                    alert(r + " OK");
+                    alert("El pedido fue generado exitosamente!");
                 }
             });
         })

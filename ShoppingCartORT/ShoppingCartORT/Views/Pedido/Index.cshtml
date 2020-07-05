@@ -2,6 +2,7 @@
 
 @{
     Layout = null;
+    double totalGeneral = 0;
 }
 
 <!DOCTYPE html>
@@ -13,11 +14,11 @@
     <title>Index</title>
 </head>
 <body>
-<table class="table">
-    <thead>
+<table class="table table-striped">
+    <thead class="thead-dark">
         <tr>
             <th>
-               Id del Pedido
+               #
             </th>
             <th>
                 Nombre Comprador
@@ -43,15 +44,34 @@
             <td>
                 @{
                     var total = pedido.ObtenerTotalPedido();
+                    totalGeneral = totalGeneral + total;
                 }
-                @Html.DisplayFor(x => total)
+                $@Html.DisplayFor(x => total)
             </td>
 
             <td>
-                <a asp-action="Details" asp-route-id="@pedido.pedidoID">Details</a>
+                <button type="button" class="btn btn-info">
+                    <a asp-action="Details" asp-route-id="@pedido.pedidoID">Detalle</a>
+                </button>
             </td>
         </tr>
 }
+    <tr class="table-success">
+        <td>
+            
+        </td>
+        <td>
+            
+            <strong>GANANCIA TOTAL</strong>
+        </td>
+        <td>
+            @{
+                <strong>$ @Html.DisplayFor(x => totalGeneral)</strong>
+            }
+        </td>
+        <td>
+       </td>
+    </tr>
     </tbody>
 </table>
 </body>
