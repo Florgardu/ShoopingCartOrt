@@ -8,5 +8,13 @@ namespace ShoppingCartORT.Models
         public int cantidad { get; set; }
         public Producto producto { get; set; }
         public Pedido pedido { get; set; } // Agregamos al pedido que corresponde.
+
+
+        public double ObtenerTotal()
+        {
+            double precioTotalItem = this.producto.precio * this.cantidad;
+            return precioTotalItem;
+        }
     }
+
 }

@@ -9,7 +9,7 @@ namespace ShoppingCartORT.Data
     {
         public static void Initialize(ShoppingCartORTContext context)
         {
-            context.Database.EnsureDeleted();
+       //     context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
             if (context.Productos.Any())

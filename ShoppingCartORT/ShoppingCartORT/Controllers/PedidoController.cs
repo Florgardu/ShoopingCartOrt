@@ -21,30 +21,67 @@ namespace ShoppingCartORT.Controllers
             _context = context;
         }
 
+
+        // prueba pedidos
+
+       public void VerPedidos()
+       {
+           var Pedidos = _context.Pedidos.Include("items.producto").Include("usuario")
+                        .ToList();
+
+            foreach (Pedido p in Pedidos)
+            {
+
+                Console.WriteLine(p.nombre);
+                Console.WriteLine(p.usuario.nombre);
+                Console.WriteLine(p.ObtenerTotalPedido());
+                Console.WriteLine("detalle items");
+                foreach (Item item in p.items)
+                {
+                    Console.WriteLine(item.producto.nombre);
+                    Console.WriteLine(item.cantidad);
+                    Console.WriteLine(item.ObtenerTotal());
+                }
+                    
+
+            }
+
+
+        }
+
+
+
         // GET: Pedido
         public async Task<IActionResult> Index()
         {
-            //_context.Pedidos.ToListAsync()
-            return View(await _context.Pedidos.ToListAsync());
+            var Pedidos = _context.Pedidos
+                .Include("items.producto")
+                .Include("usuario")
+                .ToList();
+            return View(Pedidos);
         }
+
+
 
         // GET: Pedido/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var pedido = await _context.Pedidos
-                .FirstOrDefaultAsync(m => m.pedidoID == id);
-            if (pedido == null)
-            {
-                return NotFound();
-            }
-
-            return View(pedido);
+            Console.WriteLine("me llego el id" + id);
+            var Pedido = _context.Pedidos
+                .Where(p => p.pedidoID == id)
+                .Include("items.producto")
+                .Include("usuario")
+                .FirstOrDefault();
+            return View(Pedido);
         }
+
+
+        // GET: Pedido/Details/5
+     //   public async Task<IActionResult> Details(int id)
+       // {
+         //   Console.WriteLine("me llego el id" + id );
+
+//        }
 
         // GET: Pedido/Create
         public IActionResult Create()

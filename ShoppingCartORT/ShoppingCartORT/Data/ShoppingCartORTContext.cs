@@ -9,6 +9,10 @@ namespace ShoppingCartORT.Data
 
     public class ShoppingCartORTContext : DbContext
     {
+        public ShoppingCartORTContext()
+        {
+        }
+
         public ShoppingCartORTContext(DbContextOptions<ShoppingCartORTContext> options) : base(options)
         {
         }

@@ -9,25 +9,51 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <title>Details</title>
 </head>
-<body>
+    <body>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre producto
+                    </th>
+                    <th>
+                        Cantidad 
+                    </th>
+                    <th>
+                        Total 
+                    </th>
 
-<div>
-    <h4>Pedido</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.pedidoID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
-</body>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var Item in Model.items)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(x => Item.producto.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => Item.cantidad)
+
+                        </td>
+                        <td>
+                            @{var total = Item.ObtenerTotal();
+                            }
+                            @Html.DisplayFor(x => total)
+                        </td>
+
+                       <td>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+    </body>
 </html>
