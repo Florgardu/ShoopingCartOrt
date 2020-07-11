@@ -45,14 +45,14 @@
                         @HttpContextAccessor.HttpContext.Session.GetString("user") == null)
                     {
                         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
-                            <a asp-area="" asp-controller="Usuario" asp-action="Create">Registrarse </a>
+                            <a asp-area="" asp-controller="Usuario" asp-action="Create" style="color: white !important;text-decoration: none;">Registrarse </a>
                         </button>
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left: 10px;">
-                            <a asp-area="" asp-controller="Usuario" asp-action="Login">Ingresar</a>
+                            <a asp-area="" asp-controller="Usuario" asp-action="Login" style="color: white !important;text-decoration: none;">Ingresar</a>
                         </button>
                     } else {
                         <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
-                            <a asp-area="" asp-controller="Usuario" asp-action="Logout">Logout </a>
+                            <a asp-area="" asp-controller="Usuario" asp-action="Logout" style="color: white !important;text-decoration: none;">Logout </a>
                         </button>
                     }
                 }
@@ -67,7 +67,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - ShoppingCartORT - <a asp-area="" asp-controller="Usuario" asp-action="Create">Privacy</a>
+            &copy; 2020 - ShoppingCartORT
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

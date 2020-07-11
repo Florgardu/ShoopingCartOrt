@@ -6,13 +6,6 @@
 
 <!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <title>Details</title>
-</head>
-<body>
     <table class="table table-striped" style=" border: solid #d6d2d2 0.5px; box-shadow: 5px 10px 8px #888888;">
         <thead class="table-primary">
             <tr>
@@ -60,7 +53,5 @@
         </tbody>
     </table>
     <button type="button" class="btn btn-secondary" style=" float: right;">
-        Volver
+        <a asp-area="" asp-controller="Pedido" asp-action="Index" style="color: white !important;text-decoration: none;">Volver</a>
     </button>
-</body>
-</html>

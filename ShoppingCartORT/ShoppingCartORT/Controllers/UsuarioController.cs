@@ -12,7 +12,6 @@ namespace ShoppingCartORT.Controllers
     public class UsuarioController : Controller
     {
         private readonly ShoppingCartORTContext _context;
-        private Usuario usuarioContext;
 
 
         public UsuarioController(ShoppingCartORTContext context)
@@ -37,7 +36,6 @@ namespace ShoppingCartORT.Controllers
         {
             HttpContext.Session.SetString("rol", string.Empty);
             HttpContext.Session.SetString("user", string.Empty);
-            Console.WriteLine(HttpContext.Session.GetString("user"));
             return RedirectToAction("Index", "Home");
             
         }
@@ -56,7 +54,6 @@ namespace ShoppingCartORT.Controllers
                     ViewBag.Error = "Usuario o clave incorrectos.";
                     return View();
                 }
-                usuarioContext = usuarioFromDB;
                 HttpContext.Session.SetString("user", usuarioFromDB.mail);
                 HttpContext.Session.SetString("userNombre", usuarioFromDB.nombre);
                 HttpContext.Session.SetString("userApellido", usuarioFromDB.apellido);
@@ -104,7 +101,6 @@ namespace ShoppingCartORT.Controllers
                 usuario.rol = "USER";
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
-                usuarioContext = usuario;
                 return RedirectToAction("Index","Home");
             }
             return View(usuario);

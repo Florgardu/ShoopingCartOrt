@@ -6,13 +6,6 @@
 
 <!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <title>Create</title>
-</head>
-<body>
     <div class="row" style="margin-top: 35px;">
         <div class="col-md-4" style="width: 50%; margin: 0 auto; border: solid #d6d2d2 0.5px;box-shadow: 5px 10px 8px #888888;">
             <form asp-action="Create">
@@ -52,5 +45,3 @@
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
-</body>
-</html>

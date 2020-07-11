@@ -8,13 +8,6 @@
 
 <!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <title>Index</title>
-</head>
-<body>
     <table class="table table-striped" style=" border: solid #d6d2d2 0.5px; box-shadow: 5px 10px 8px #888888;">
         <thead class="table-primary">
             <tr>
@@ -52,7 +45,7 @@
 
                     <td>
                         <button type="button" class="btn btn-info">
-                            <a asp-action="Details" asp-route-id="@pedido.pedidoID">Detalle</a>
+                            <a asp-action="Details" asp-route-id="@pedido.pedidoID" style="color: white !important;text-decoration: none;">Detalle</a>
                         </button>
                     </td>
                 </tr>
@@ -75,7 +68,6 @@
         </tbody>
     </table>
     <button type="button" class="btn btn-secondary" style=" float: right;">
-        Volver
+        <a asp-controller="Producto" asp-action="Index" style="color: white !important;text-decoration: none;">Volver</a>
     </button>
-</body>
-</html>
+
